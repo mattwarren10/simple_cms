@@ -1,0 +1,19 @@
+<h1>Hello.html.erb</h1>
+
+<%= 1 + 1 %>
+
+<% target = 'world' %>
+<%= "hello #{target}" %>
+
+<% @array.each do |n| %>
+	<br /><%= n %>
+<% end %>
+
+<br />
+<%= link_to 'Index page 2', :action => 'index' %><br />
+
+ID <%= @id %><br />
+ID <%= params[:id] %><br />
+Page <%= @page %><br />
+
+Next Page <%= @page.to_i + 1 %><br />
