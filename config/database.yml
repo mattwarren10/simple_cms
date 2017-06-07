@@ -16,6 +16,7 @@ default: &default
   username: rails_user
   password: secretpassword
   socket: /tmp/mysql.sock
+  host: localhost
 
 development:
   <<: *default
