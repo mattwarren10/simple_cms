@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170611155357) do
+ActiveRecord::Schema.define(version: 20170612004644) do
 
   create_table "admin_users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name", limit: 25
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20170611155357) do
     t.index ["subject_id"], name: "index_pages_on_subject_id"
   end
 
-  create_table "section_edits", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "section_edits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "admin_user_id"
     t.integer "section_id"
     t.string "summary"
