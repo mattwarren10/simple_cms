@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     end
   end
 
+  
+
   get 'nba_stats/index'
 
   get 'demo/index'
