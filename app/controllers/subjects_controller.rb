@@ -40,7 +40,7 @@ class SubjectsController < ApplicationController
       redirect_to(subject_path(@subject))
     else
       # If save fails, redisplay the form so user can fix problem
-      render :index
+      render :edit
     end
   end
 
