@@ -1,8 +1,5 @@
-<% if !flash[:notice].blank? %>
-	<div class="notice">
-		<%= flash[:notice] %>
-	</div>
-<% end %>
+<% @page_title = "View Page" %>
+
 
 <%= link_to("<< Back to List", pages_path, :class => 'back-link') %>
 
