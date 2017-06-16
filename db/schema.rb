@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170612004644) do
+ActiveRecord::Schema.define(version: 20170616195918) do
 
   create_table "admin_users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name", limit: 25
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20170612004644) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "content_type"
     t.index ["page_id"], name: "index_sections_on_page_id"
   end
 
