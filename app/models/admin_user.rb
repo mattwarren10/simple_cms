@@ -1,12 +1,14 @@
 class AdminUser < ApplicationRecord
 
+	has_secure_password
+
 	#Associations
 	has_and_belongs_to_many :pages
 	has_many :section_edits
 	has_many :sections, :through => :section_edits
 
 	EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/i
-	FORBIDDEN_USERNAMES = ['mattwarren','humptydumpty','marymary']
+	FORBIDDEN_USERNAMES = ['humptydumpty','marymary']
 
 	#Validations
 	# validates_presence_of :first_name
