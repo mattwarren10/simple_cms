@@ -2,7 +2,7 @@ class SubjectsController < ApplicationController
 
   layout 'admin'
   
-  def index
+  def index    
     @subjects = Subject.sorted    
   end
 

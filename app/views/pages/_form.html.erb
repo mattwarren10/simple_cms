@@ -7,7 +7,7 @@
   </tr>
   <tr>
     <th>Subject ID</th>
-    <td><%= f.select(:subject_id, @subject.map {|s| [s.name, s.id]}) %></td>
+    <td><%= f.select(:subject_id, @subjects.map {|s| [s.name, s.id]}) %></td>
   </tr>
   <tr>
     <th>Permalink</th>
