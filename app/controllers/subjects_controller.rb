@@ -3,13 +3,13 @@ class SubjectsController < ApplicationController
   layout 'admin'
 
   before_action :confirmed_logged_in
+  before_action :find_subjects, :only => [:new, :show, :create, :edit, :update, :delete, :destroy]
   
   def index    
     @subjects = Subject.sorted    
   end
 
-  def show
-    @subject = Subject.find(params[:id])
+  def show    
   end
 
   def new
@@ -32,14 +32,12 @@ class SubjectsController < ApplicationController
     end
   end
 
-  def edit
-    @subject = Subject.find(params[:id])
+  def edit    
     @subject_count = Subject.count
   end
 
   def update
-    # Find a new object using form parameters
-    @subject = Subject.find(params[:id])
+    # Find a new object using form parameters    
     # Update the object
     if @subject.update_attributes(subject_params)
       # If save succeeds, redirect to the index action
@@ -52,18 +50,21 @@ class SubjectsController < ApplicationController
     end
   end
 
-  def delete
-    @subject = Subject.find(params[:id])
+  def delete   
+    @subject = Subject.find(params[:id]) 
   end
 
   def destroy
-    @subject = Subject.find(params[:id])
     @subject.destroy
     flash[:notice] = "Subject '#{@subject.name}' destroyed sucessfully."
     redirect_to(subjects_path)
   end
 
   private
+   def find_subjects
+    @subject = Subject.find(params[:id])
+   end
+
    def subject_params
       params.require(:subject).permit(:name, :position, :visible, :created_at)
    end

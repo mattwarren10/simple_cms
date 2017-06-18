@@ -2,8 +2,8 @@ class Section < ApplicationRecord
 
 	#Associations
 	belongs_to :page
-	has_many :section_edits
-	has_many :admin_users, :through => :section_edits
+  	has_many :section_edits
+  	has_many :admin_users, :through => :section_edits
 
 	#Constructor scopes
 	scope :visible, lambda { where(:visible => true) }
@@ -16,7 +16,8 @@ class Section < ApplicationRecord
 	CONTENT_TYPES = ['text', 'HTML']
 
 	validates_presence_of :name
-	validates_length_of :name, :maximum => 255
-	validates_inclusion_of :content_type, :in => CONTENT_TYPES, :message => "must be one of: #{CONTENT_TYPES.join(', ')}"
-	validates_presence_of :content
+  	validates_length_of :name, :maximum => 255
+  	validates_inclusion_of :content_type, :on => [:create], :in => CONTENT_TYPES,
+    	:message => "must be one of: #{CONTENT_TYPES.join(', ')}"
+  	validates_presence_of :content
 end
