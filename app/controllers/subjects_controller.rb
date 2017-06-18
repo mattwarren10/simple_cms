@@ -3,7 +3,7 @@ class SubjectsController < ApplicationController
   layout 'admin'
 
   before_action :confirmed_logged_in
-  before_action :find_subjects, :only => [:new, :show, :create, :edit, :update, :delete, :destroy]
+  before_action :find_subjects, :except => [:index, :new, :create]
   
   def index    
     @subjects = Subject.sorted    
