@@ -1,5 +1,7 @@
 class Page < ApplicationRecord
 
+	acts_as_list :scope => :subject
+
 	#Associations
 	belongs_to :subject, { :optional => false }
 	has_many :sections

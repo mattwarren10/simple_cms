@@ -5,6 +5,7 @@ class SectionsController < ApplicationController
   before_action :confirmed_logged_in
   before_action :find_page
   before_action :find_section, :except => [:index, :new, :create]
+  before_action :set_section_count, :only => [:new, :create, :edit, :update]
   
   def index
     @sections = @page.sections.sorted
@@ -15,12 +16,10 @@ class SectionsController < ApplicationController
   end
 
   def new
-    @section = Section.new(:page_id => @page.id)
-    @section_count = Section.count + 1
+    @section = Section.new(:page_id => @page.id)    
   end
 
-  def edit    
-    @section_count = Section.count
+  def edit        
   end
 
   def create
@@ -29,8 +28,7 @@ class SectionsController < ApplicationController
     if @section.save
       flash[:notice] = "Section successfully created."
       redirect_to section_path(:page_id => @page.id)
-    else
-      @section_count = Section.count + 1
+    else      
 
       render :new
     end
@@ -40,8 +38,7 @@ class SectionsController < ApplicationController
     if @section.update_attributes(section_params)
       flash[:notice] = "Section successfully updated."
       redirect_to section_path(@section, :page_id => @page.id)
-    else
-      @section_count = Section.count
+    else      
 
       render :edit
     end
@@ -69,6 +66,13 @@ class SectionsController < ApplicationController
 
   def find_section
     @section = Section.find(params[:id])
+  end
+
+  def set_section_count
+    @section_count = @page.sections.count
+    if params[:action] = 'new' || params[:action] = 'create'
+      @section_count += 1
+    end
   end
 
 end

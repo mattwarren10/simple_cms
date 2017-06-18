@@ -1,5 +1,7 @@
 class Subject < ApplicationRecord
 
+	acts_as_list
+
 	#Associations
 	has_many :pages
 
