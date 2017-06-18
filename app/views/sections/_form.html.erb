@@ -1,14 +1,14 @@
 <%= error_messages_for(f.object) %>
 
-    <table summary="Section form fields">
-      <tr>
-        <th><%= f.label(:page_id) %></th>
-        <td><%= f.select(:page_id, @pages.map {|p| [p.name, p.id]}) %></td>
-      </tr>	
+    <table summary="Section form fields">      
       <tr>
         <th><%= f.label(:name) %></th>
         <td><%= f.text_field(:name) %></td>
       </tr>
+      <tr>
+        <th><%= f.label(:page_id) %></th>
+        <td><%= f.object.page.name %></td>
+      </tr> 
       <tr>
         <th><%= f.label(:position) %></th>
         <td><%= f.select(:position, 1..@section_count) %></td>

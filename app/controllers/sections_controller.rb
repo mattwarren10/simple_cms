@@ -3,11 +3,11 @@ class SectionsController < ApplicationController
   layout 'admin'
 
   before_action :confirmed_logged_in
-  before_action :find_pages, :only => [:new, :create, :edit, :update]
+  before_action :find_page
   before_action :find_section, :except => [:index, :new, :create]
   
   def index
-    @sections = Section.sorted
+    @sections = @page.sections.sorted
   end
 
   def show
@@ -15,24 +15,23 @@ class SectionsController < ApplicationController
   end
 
   def new
-    @section = Section.new()
+    @section = Section.new(:page_id => @page.id)
     @section_count = Section.count + 1
-    @pages = Page.sorted
   end
 
   def edit    
     @section_count = Section.count
-    @pages = Page.sorted
   end
 
   def create
     @section = Section.new(section_params)
+    @section.page = @page
     if @section.save
       flash[:notice] = "Section successfully created."
-      redirect_to section_path(@section)
+      redirect_to section_path(:page_id => @page.id)
     else
       @section_count = Section.count + 1
-      @pages = Page.sorted
+
       render :new
     end
   end
@@ -40,10 +39,10 @@ class SectionsController < ApplicationController
   def update
     if @section.update_attributes(section_params)
       flash[:notice] = "Section successfully updated."
-      redirect_to section_path(@section)
+      redirect_to section_path(@section, :page_id => @page.id)
     else
       @section_count = Section.count
-      @pages = Page.sorted
+
       render :edit
     end
   end
@@ -55,7 +54,7 @@ class SectionsController < ApplicationController
   def destroy    
     @section.destroy
     flash[:notice] = "Section '#{@section.name}' successfully deleted."
-    redirect_to(sections_path)
+    redirect_to(sections_path(:page_id => @page.id))
   end
 
   private
@@ -63,9 +62,10 @@ class SectionsController < ApplicationController
     params.require(:section).permit(:page_id, :name, :position, :visible, :content, :content_type)
   end
 
-  def find_pages
-    @page = Page.sorted
+  def find_page
+    @page = Page.find(params[:page_id])
   end
+  
 
   def find_section
     @section = Section.find(params[:id])
