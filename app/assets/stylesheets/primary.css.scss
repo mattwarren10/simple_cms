@@ -53,6 +53,15 @@ a:hover {}
   color: $white;
 
   h1 { margin: 0; padding: 0; }
+  #login a, #public a {
+    color: $white;
+    text-decoration: none;
+  }
+
+  #login a:hover,
+  #public a:hover {
+    color: $yellow;
+  }
 }
 
 #main {

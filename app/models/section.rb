@@ -1,6 +1,6 @@
 class Section < ApplicationRecord
 
-	acts_as_list :scope => :subject
+	acts_as_list :scope => :page
 
 	#Associations
 	belongs_to :page

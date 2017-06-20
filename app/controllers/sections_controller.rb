@@ -27,7 +27,7 @@ class SectionsController < ApplicationController
     @section.page = @page
     if @section.save
       flash[:notice] = "Section successfully created."
-      redirect_to section_path(:page_id => @page.id)
+      redirect_to section_path(@section, :page_id => @page.id)
     else      
 
       render :new
