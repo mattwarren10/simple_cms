@@ -43,6 +43,10 @@ table tr th, table tr td {
 a, a:visited { color: $yellow; }
 a:hover {}
 
+a.action, a.action:visited {
+  color: $purple;
+}
+
 .clear { clear: both; }
 .center { text-align: center; }
 
