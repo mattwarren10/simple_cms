@@ -20,7 +20,12 @@
   ul {
     margin: 3em 250px;
     list-style: none;
-    li { margin-bottom: 1em; }
+    li { 
+      margin-bottom: 1em;
+      a, a:visited {
+        color: #222;
+      }
+     }
   }
 }
 

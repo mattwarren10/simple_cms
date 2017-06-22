@@ -10,11 +10,11 @@
 #   http://dev.mysql.com/doc/refman/5.7/en/old-client.html
 #
 default: &default
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: 5
   username: rails_user
-  password: secretpassword
+  password: passwordsecret
   socket: /tmp/mysql.sock
   host: localhost
 
@@ -52,4 +52,4 @@ production:
   <<: *default
   database: simple_cms_production
   username: simple_cms
-  password: <%= ENV['SIMPLE_CMS_DATABASE_PASSWORD'] %>
+  password: 5
