@@ -11,11 +11,8 @@
 #
 default: &default
   adapter: postgresql
-  encoding: utf8
+  encoding: unicode
   pool: 5
-  username: rails_user
-  password: passwordsecret
-  socket: /tmp/mysql.sock
   host: localhost
 
 development:
@@ -52,4 +49,4 @@ production:
   <<: *default
   database: simple_cms_production
   username: simple_cms
-  password: 5
+  password: passwordsecret
