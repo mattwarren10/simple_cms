@@ -43,7 +43,9 @@ table tr th, table tr td {
 a, a:visited { color: $yellow; }
 a:hover {}
 
-a.action, a.action:visited {
+a.action, 
+a.action:visited,
+a.back-link {
   color: $purple;
 }
 
