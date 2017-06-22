@@ -36,7 +36,6 @@ gem 'acts_as_list', '~> 0.9.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-, group: :production
 
 group :production
   gem 'rails_12factor'
