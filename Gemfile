@@ -37,7 +37,7 @@ gem 'acts_as_list', '~> 0.9.5'
 # gem 'capistrano-rails', group: :development
 
 
-group :production
+group :production do
   gem 'rails_12factor'
   gem 'pg'
 end
